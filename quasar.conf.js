@@ -21,7 +21,8 @@ module.exports = function (/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
 
-      'i18n'
+      'i18n',
+      'constants'
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -62,6 +63,15 @@ module.exports = function (/* ctx */) {
 
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
+      extendWebpack (cfg) {
+        cfg.module.rules.push({
+          test: /\.vue$/,
+          loader: 'vue-svg-inline-loader',
+          options: {
+            removeAttributes: ['fill']
+          }
+        })
+      },
 
       // https://v1.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
