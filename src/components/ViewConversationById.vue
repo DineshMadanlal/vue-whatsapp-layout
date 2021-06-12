@@ -156,6 +156,8 @@ export default {
       }
     }
     .conversation-messages-section {
+      background-color: #e5ddd5;
+      // background-image: linear-gradient(180deg ,#dddbd1,#d2dbdc);
       .background-img-section {
         min-height: inherit;
         background-image: url('../assets/illustrations/bg-chat-tile.png');
