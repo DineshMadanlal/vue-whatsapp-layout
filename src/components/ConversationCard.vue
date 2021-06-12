@@ -1,8 +1,12 @@
 <template>
   <q-item
     clickable
+    @click="$emit('showEnhancedChat')"
 
     class="conversation-card"
+    :class="{ active: isActive }"
+
+    v-ripple:positive
   >
     <!-- Conversation Profile Picture -->
     <q-img
@@ -53,6 +57,10 @@ export default {
       type: Object,
       default: () => {},
       required: true
+    },
+    isActive: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -82,6 +90,13 @@ export default {
     .time-text {
       font-size: 12px;
       color: rgba($color: $black, $alpha: 0.8);
+    }
+  }
+
+  &.active {
+    background-color: #ebebeb;
+    .name-text {
+      color: rgba($color: $black, $alpha: 1);
     }
   }
 }

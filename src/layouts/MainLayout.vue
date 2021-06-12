@@ -1,13 +1,13 @@
 <template>
   <!-- Whatsapp layout -->
-  <q-layout view="lhh lpR lff" class="vue-whatsapp-laayout">
+  <q-layout view="lHh lpR lFf" class="vue-whatsapp-layout">
     <!-- Left sidebar/drawer -->
     <q-drawer
       :width="430"
       v-model="leftDrawerOpen"
 
-      overlay
       bordered
+      show-if-above
 
       side="left"
       class="whatsapp-sidebar"
@@ -30,7 +30,6 @@
         <div class="user-profile-block">
           <!-- Profile picture of the user -->
           <q-img
-            contain
 
             src="https://miro.medium.com/fit/c/1360/1360/1*YPNsXXFILEUnKLiw3OdpIg.jpeg"
             width="40px"
@@ -47,6 +46,8 @@
             dense
             rounded
             unelevated
+
+            color="positive"
           >
             <img
               svg-inline
@@ -62,6 +63,8 @@
             rounded
             unelevated
             class="q-ml-md q-mr-sm"
+
+            color="positive"
           >
             <img
               svg-inline
@@ -78,6 +81,8 @@
               dense
               rounded
               unelevated
+
+              color="positive"
             >
               <img
                 svg-inline
@@ -137,12 +142,20 @@
           :key="`each-conversation-${eachConversation.id}-${index}`"
 
           :conversation="eachConversation"
+          :isActive="activeConversation.id === eachConversation.id"
+
+          @showEnhancedChat="activeConversation = eachConversation"
         />
       </q-scroll-area>
     </q-drawer>
 
-    <!-- Right side content -->
+    <!-- Page container content -->
     <q-page-container>
+      <q-page>
+        <ViewConversationById
+          :conversation="activeConversation"
+        />
+      </q-page>
     </q-page-container>
 
   </q-layout>
@@ -157,12 +170,14 @@ export default {
   data () {
     return {
       leftDrawerOpen: true, // state variable to open/close the sidebar
-      conversationFilterText: '' // filter conversation text
+      conversationFilterText: '', // filter conversation text
+      activeConversation: {}
     }
   },
   components: {
     // lazy load components - same as how we lazy load pages in routes
-    ConversationCard: () => import('components/ConversationCard')
+    ConversationCard: () => import('components/ConversationCard'),
+    ViewConversationById: () => import('components/ViewConversationById')
   },
   computed: {
     // ---- STATIC DATA BEGIN ----
@@ -183,9 +198,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.vue-whatsapp-laayout {
-  width: 100%;
-
+.vue-whatsapp-layout {
   .whatsapp-sidebar {
     // sidebar css here
     .sidebar-header-wrapper {
@@ -254,7 +267,7 @@ export default {
 </style>
 
 <style lang="scss">
-.vue-whatsapp-laayout {
+.vue-whatsapp-layout {
   // Here, the css is not scoped. We update the framework css here
   .whatsapp-sidebar {
     .sidebar-header-wrapper {
