@@ -1,1 +1,18 @@
-// app global css in SCSS form
+html {
+	font-size: 16px;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+	margin: 0px;
+}
+
+.no-line-height {
+  line-height: 0px;
+}
