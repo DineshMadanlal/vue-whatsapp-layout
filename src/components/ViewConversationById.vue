@@ -168,7 +168,7 @@ export default {
     .conversation-footer {
       height: 60px;
       padding: 10px 16px;
-      background-color: $grey-dark;
+      background-color: rgb(240 240 240);
     }
   }
 
