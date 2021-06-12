@@ -1,6 +1,9 @@
-# Quasar App (quasar-starter)
+# Vue Whatsapp Layout (Quasar Application)
 
 A Quasar Framework app
+
+## DEMO
+https://vue-whatsapp-layout.netlify.app/
 
 ## Install the dependencies
 ```bash
@@ -21,6 +24,3 @@ npm run lint
 ```bash
 quasar build
 ```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
